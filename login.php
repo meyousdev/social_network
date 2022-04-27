@@ -1,8 +1,8 @@
 <?php
 
-$title  = "Accueil";
+$title  = "Connexion";
 
 include("includes/constants.php");
 include("includes/functions.php");
 
-require("views/index.view.php");
+require("views/login.view.php");
