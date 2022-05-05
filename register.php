@@ -71,19 +71,19 @@ if(isset($_POST['register']))
 			set_flash("Mail d'activation envoyé","success");
 
 			redirect("index.php");
-
-
+		}else{
+			save_input_data();
 		}
 
-	}else{
-		$errors [] = "Veuillez svp remplir tous les champs";
-
+	}else
+	{
+		$errors[] = "Veuillez svp remplir tous les champs !" ;
+		save_input_data();
 	}
+}else{
+	clear_input_data();
 }
-else
-{
-
-}
+	
 	
 
 require("views/register.view.php");
