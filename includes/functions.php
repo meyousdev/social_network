@@ -47,23 +47,21 @@ if ( ! function_exists ('set_active') )
     }
 }
 
-if ( ! function_exists ('redirect') )
+if ( ! function_exists( 'redirect' ) )
 {
-    function redirect( $page )
-    {
-        header("Location: ".$page);
-        exit();
-    }
+	function redirect( $page )
+	{
+		header( 'Location: '. $page );
+		exit() ;
+	}
 }
 
-if ( ! function_exists ('set_flash') )
+if ( ! function_exists ( 'set_flash' ) )
 {
-    function set_flash($message,$type='info')
+    function set_flash ( $message , $type = 'info' )
     {
-       if(isset($_SESSION['notification']['message']) && isset($_SESSION['notification']['type'])){
-            $_SESSION['notification']['message'] = $message;
-            $_SESSION['notification']['type'] = $type;
-       }
+        $_SESSION['notification']['message'] = $message;
+        $_SESSION['notification']['type'] = $type;
     }
 }
 

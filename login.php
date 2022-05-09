@@ -1,10 +1,11 @@
 <?php
+session_start();
+include ('filters/guest_filter.php');
 
 $title  = "Connexion";
 
 include("includes/constants.php");
 include("config/database.php");
-
 include("includes/functions.php");
 
 // Si le formulaire a été soumis
@@ -20,10 +21,13 @@ if ( isset( $_POST['login'] ) ){
         ]);
 
         // Récupération de l'utilisateur dans la base de données qui correspondant à l'utilisateur qui se connecte 
-        $userHasBeenFound = $q->fetch(PDO::FETCH_OBJ);
- 
+        $userHasBeenFound = $q->rowCount();
+
         if ( $userHasBeenFound)
         {
+            $user = $q->fetch(PDO::FETCH_OBJ);
+            $_SESSION['user_id'] = $user->id; 
+            $_SESSION['pseudo'] = $user->pseudo;
             redirect("profile.php");
         }
         else
